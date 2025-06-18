@@ -3,6 +3,11 @@
 **(Advocacy Launchpad PMA Membership Association Covenant)**
 *A Private Contract Membership Association*
 
+## 0. Definitions
+
+“Blockchain” refers to distributed ledger technologies (DLT), including but not limited to Ricardian smart contracts (v2) that combine legally-enforceable natural language with executable code.
+
+
 ## 1. Membership Agreement
 
 By digitally signing this agreement with your EVM wallet you accept the terms of this "Hat" in the **Advocacy Launchpad PMA Membership Association** (hereinafter "Association"), a private network state with original and exclusive jurisdiction. Membership is by **invitation only** and requires application approval. By signing this agreement, I accept the offer to become a member.
@@ -51,10 +56,24 @@ Members agree that while participating in the Association and for a period of tw
 
 This clause is intended to protect the integrity and mission of the Association while allowing members to pursue independent endeavors that do not conflict with the Association’s objectives.
 
+## 5.5 Risk Disclosure for Smart Contracts
+
+Members acknowledge the inherent risks of interacting with blockchain systems, including smart contract vulnerabilities, market volatility, and liquidity risks. The PMA is not responsible for loss of funds due to code exploits, oracle failures, or protocol errors.
+
 ## 6. ⚖️ Arbitration Clause
 
-Any disputes arising from this agreement shall be resolved **exclusively through private arbitration in ZEDE Honduras**, with a neutral arbitrator selected by mutual agreement of the parties. No party shall pursue litigation in public courts. The arbitration decision shall be **final and binding**.
+### 9. Dispute Resolution and Arbitration
 
+In the event of a dispute between members, or between a member and the Association, the parties agree to resolve the matter through **binding arbitration**.
+
+Primary arbitration shall be offered in one of the following jurisdictions, as elected by the Board of Stewards:
+
+- **Prospera ZEDE, Honduras**, under the applicable private arbitration framework recognized by its governing authority; or  
+- **Kleros**, a decentralized dispute resolution protocol (https://kleros.io) for peer-reviewed, blockchain-native arbitration.
+
+By joining this Association, members expressly waive their right to litigate in public courts and consent to private dispute resolution through one of the above mechanisms. The outcome of such arbitration shall be final and binding unless overridden by a Proposal for Grace approved by the Board of Stewards.
+
+Members further agree to cover their own arbitration costs and recognize that an **internal insurance pool** or bounty system may be used at the discretion of the Association to support claims, settlements, or equitable resolutions.
 For complaints or concerns, please contact 📩 **[info@adbongo.io](mailto\:info@adbongo.io)**.
 
 ## 7. No Legal Advice Disclaimer
@@ -81,15 +100,28 @@ Members who donate to the Association in alignment with its mission may receive 
 - **$35 donation** for PEMF therapy
 - **$100 donation** for Kambo
 - **$100 donation** for medicine church
-- **$100 donation** for Baba reading using organic computer (opele) from Yoruba tribe
+- **$111 donation** for Baba reading using organic computer (opele) from Yoruba tribe.
 - Offerings may be combined into memberships
 - Web3 Accelerator: TBD (50% donated to university)
 
 These donation-based accommodations reflect the Association's commitment to **spiritual rejuvenation and regenerative living**. 🌿✨
 
-## 10. Final Agreement
+## 10. AI Governance & Agent Terms
+
+Members agree to the use of AI agents for communication, negotiation, document generation, and enforcement within this PMA. These agents may interact autonomously (agent-to-agent), and all such interactions are subject to audit and review via the PMA’s designated AI audit protocol.
+
+Members consent to participate in a governance framework that may evolve with emerging technologies and align with the goals of decentralization, protocol impact, and network-state formation.
+
+## 11. Member Classification
+
+Domestic members (U.S.-based) shall be treated as individuals under PMA protections. International members shall be classified as “Merchants” to enable transnational contract enforcement under Lex Mercatoria (customary law among merchants).
+
+
+## 12.  Consent to Governance Terms
 
 I have **freely chosen** to change my legal status from a public person to a **private member** in the Association.
 I acknowledge the **confidentiality, indemnity, and arbitration** terms of this contract and agree to uphold the mission and ethical standards of the Association for a minimum of **100 years**.
+By signing this agreement digitally or physically, members acknowledge and accept the PMA’s white paper, governance framework, insurance pool terms, and evolving definitions of participation. Consent may be expressed via wallet signature, written sigil, or formal onboarding ceremony.
+
 
 **Witness (Member Signature)**: [[signer]]

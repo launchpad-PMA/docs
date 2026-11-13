@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Member record</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="dashboard">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="/">Advocacy Launchpad PMA</a>
+      <nav aria-label="Pathways">
+        <a href="/adbongo">AdBongo</a>
+        <a href="/temple">Temple of Roots</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap narrow">
+    <h1>Member record</h1>
+    <p class="lede">Foundational membership is the accepted covenant. Patreon, Hipcamp, NFT checks, and AdBongo inquiries are optional.</p>
+    <form id="member-gate" class="stack">
+      <p id="member-message" class="meta" role="status"></p>
+      <label>Member access token <input id="access-token" type="password" autocomplete="current-password" required></label>
+      <button type="submit">Open my record</button>
+    </form>
+    <section id="dashboard" class="stack"></section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

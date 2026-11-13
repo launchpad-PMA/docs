@@ -34,6 +34,8 @@ AdBongo LLC is a separate limited liability company. This Covenant does not stat
 
 "Blockchain" refers to distributed ledger technologies (DLT), including but not limited to Ricardian smart contracts (v2) that combine legally-enforceable natural language with executable code.
 
+A Ricardian contract, in this Covenant, is one document that a lawyer and a program both read. The lawyer reads this prose. The program reads the same prose, divided at the same section headings, and checks the hashes in Section 16. There is no second contract for the machine.
+
 "Foundational membership" means the voluntary private contractual relationship created when the Association accepts an application. It does not require a purchase, donation, subscription, or NFT.
 
 "Pathway" means the website context through which a person applies. The AdBongo pathway and the Temple of Roots pathway are two doors into the same Association.
@@ -262,7 +264,21 @@ Acknowledgment:
 
 "By signing and submitting this application, I voluntarily apply for membership in the Advocacy Launchpad Private Membership Association, acknowledge that I have reviewed the applicable Membership Covenant, and intend my electronic signature to bind me to its terms upon acceptance by the Association."
 
-The electronic signature, the agreement version, and the server's submission time are part of the membership record.
+The electronic signature, the agreement version, and the server's submission time are part of the membership record. The signature record also stores the Ricardian identifier of this prose and the hash of the signing parameters, as Section 16 describes.
+
+## 16. Ricardian Form
+
+This Covenant is a Ricardian contract: one document that a lawyer and a program both read. A lawyer reads this prose. A program reads the same prose, divided at these section headings, and checks the hashes in this section. The program does not read a different contract, and it does not add a term that is absent from this prose.
+
+The Ricardian identifier is the SHA-256 hash of the canonical prose. The canonical prose is this Covenant after the filing header, encoded as UTF-8, with every line ending converted to LF, with trailing spaces and tabs removed from each line, with blank lines trimmed from the start and the end, and with one trailing newline. The identifier is computed from that prose. The digest is not written into the prose. A change to the prose produces a different identifier, and a signature on one identifier does not apply to another.
+
+The signing parameters use these keys: acknowledgment, agreementVersion, country, email, fullLegalName, pathway, proseSha256, region, signature, and submittedAt. The region key holds the state or province. Their canonical form is a JSON object with those keys in alphabetical order and no extra whitespace. The parameters hash is the SHA-256 of that JSON. The Ricardian lock is the SHA-256 of the identifier, a newline, and the parameters hash.
+
+A signature record is intact when a program recomputes the identifier from the stored prose and the lock from the stored parameters, and both match the record. That check is the executable part of this contract. It does not require a wallet, a blockchain transaction, or a token.
+
+The member's parameters stay in the membership record. They are not written to a public ledger. The Association may later publish the Ricardian identifier alone. Publishing the identifier does not publish the member's name, email, or signature.
+
+This section identifies the document. It does not change the preserved provisions of this Covenant, and it does not make a draft effective.
 
 **Witness (Member Signature):** the electronic signature captured by the signing system.
 

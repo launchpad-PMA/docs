@@ -192,7 +192,11 @@ No Supabase project is wired to `launchpad-PMA/docs`, `Adbongo-Group-LLC/website
 
 The membership app ships a tested SQLite runtime and a Postgres migration shaped for Supabase. Point it at a database only after a steward chooses the project. Do not store production member records in this public git repository.
 
-## 16. Publication gate
+## 16. Ricardian identification
+
+The drafts now describe a Ricardian form. A lawyer reads the prose. A program reads that same prose, divided at the same headings. The prose has a SHA-256 identifier, and the signature record binds the member's parameters to that identifier. The check recomputes the hashes. It does not move the disputed sentences out of the document, and it does not make them enforceable. A locked draft is still a draft. Publishing the identifier later would publish the hash of the text, not the member's name, email, or signature. Counsel should treat the identifier as a way to know which text was signed, and should still decide the items above before any version is marked approved.
+
+## 17. Publication gate
 
 Before either website links to the signing flow:
 

@@ -29,7 +29,10 @@ export function renderPdf(record) {
     }
     doc.text(`Pathway: ${record.pathway}`);
     doc.text(`Agreement version: ${record.version}`);
-    doc.text(`Agreement SHA-256: ${record.sha256}`);
+    doc.text(`Ricardian identifier (prose SHA-256): ${record.proseSha256}`);
+    doc.text(`Parameters SHA-256: ${record.parametersSha256}`);
+    doc.text(`Ricardian lock: ${record.ricardianHash}`);
+    doc.text("The prose hash does not include the signer's name, email, location, or signature. The lock binds those parameters to the prose.");
     doc.text(`Application: ${record.applicationId}`);
     doc.text(`Submitted (CT): ${formatChicago(record.submittedAt)}`);
     doc.text(`Submitted (UTC): ${record.submittedAt}`);

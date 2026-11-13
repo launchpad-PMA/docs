@@ -4,6 +4,8 @@ Shared signing and approval for the AdBongo pathway and the Temple of Roots path
 
 This service is for review. It does not publish the covenants. Leave `AGREEMENT_PUBLICATION=draft` until counsel resolves `../agreements/legal-issues-for-approval.md` and a covenant file's front matter says `status: approved`.
 
+Each covenant is a Ricardian contract. A lawyer reads the prose on the membership page. A program reads the same prose at `/api/agreements/adbongo` or `/api/agreements/temple`, divided into the same sections, with the SHA-256 of that prose. The signer's name, email, location, and signature are parameters of that signing. The signature record stores a second hash that binds those parameters to the prose. Reading the record back recomputes both hashes. A wallet is not required, and the parameters stay in the membership record.
+
 The live sites were not changed:
 
 - `Adbongo-Group-LLC/website`

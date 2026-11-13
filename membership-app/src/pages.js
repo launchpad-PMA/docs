@@ -94,7 +94,9 @@ export function renderJoin({ pathway, agreement, covenantHtml, error = "" }) {
       <p class="kicker">${escapeHtml(copy.kicker)}</p>
       <h1>${escapeHtml(copy.name)} membership</h1>
       <p class="lede">${escapeHtml(copy.lede)}</p>
-      <p class="meta">Version ${escapeHtml(agreement.version)} · SHA-256 ${escapeHtml(agreement.sha256)}</p>
+      <p class="meta">Version ${escapeHtml(agreement.version)}</p>
+      <p class="meta">Ricardian identifier <code>${escapeHtml(agreement.ricardian.proseSha256)}</code></p>
+      <p class="meta">A lawyer reads the covenant below. A program reads <a href="/api/agreements/${escapeHtml(pathway)}">the same covenant</a>, divided at the same headings. The identifier is the SHA-256 of that prose. Your name, email, location, and signature are parameters bound when you sign. They are not written on a public ledger.</p>
       <article class="covenant" aria-label="Complete membership covenant">
         ${covenantHtml}
       </article>
@@ -144,6 +146,8 @@ export function renderReceived({ application, receiptToken }) {
         <div><dt>Status</dt><dd>${escapeHtml(application.status)}</dd></div>
         <div><dt>Submitted</dt><dd>${escapeHtml(application.submittedAtChicago)}</dd></div>
         <div><dt>Version</dt><dd>${escapeHtml(application.agreementVersion)}</dd></div>
+        <div><dt>Ricardian identifier</dt><dd><code>${escapeHtml(application.ricardian?.proseSha256 ?? "")}</code></dd></div>
+        <div><dt>Signature lock</dt><dd>${application.ricardian?.verified ? "Intact" : "Does not match the stored prose"}</dd></div>
       </dl>
       <p><a class="button" href="/api/applications/${escapeHtml(application.applicationId)}/pdf?receipt=${encodeURIComponent(receiptToken)}">Download the signed PDF</a></p>
       <p class="meta">Keep this page's address if you want the PDF again. It contains your receipt. The Association does not ask for a wallet or a payment to finish this step.</p>

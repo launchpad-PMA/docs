@@ -42,6 +42,9 @@ CREATE TABLE IF NOT EXISTS membership_signatures (
   agreement_version TEXT NOT NULL,
   acknowledgment_text TEXT NOT NULL,
   content_sha256 TEXT NOT NULL,
+  prose_sha256 TEXT NOT NULL DEFAULT '',
+  parameters_sha256 TEXT NOT NULL DEFAULT '',
+  ricardian_hash TEXT NOT NULL DEFAULT '',
   FOREIGN KEY (application_id) REFERENCES membership_applications(id)
 );
 
@@ -156,6 +159,12 @@ export class MembershipDb {
     this.db = new DatabaseSync(filename);
     this.db.exec("PRAGMA foreign_keys = ON");
     this.db.exec(SCHEMA);
+    const signatureColumns = this.db.prepare("PRAGMA table_info(membership_signatures)").all().map((column) => column.name);
+    for (const name of ["prose_sha256", "parameters_sha256", "ricardian_hash"]) {
+      if (!signatureColumns.includes(name)) {
+        this.db.exec(`ALTER TABLE membership_signatures ADD COLUMN ${name} TEXT NOT NULL DEFAULT ''`);
+      }
+    }
   }
 
   prepare(sql) {

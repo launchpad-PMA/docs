@@ -51,6 +51,12 @@ if (joinForm) {
       line(result, body.publicationStatus === "published"
         ? "A steward still has to accept the application."
         : "This covenant is a draft. The signature is a review record and is not effective membership.");
+      if (body.ricardian?.proseSha256) {
+        line(result, `Ricardian identifier ${body.ricardian.proseSha256}`);
+        line(result, body.ricardian.verified
+          ? "The signature lock matches this prose and these parameters."
+          : "The signature lock does not match.");
+      }
       const link = document.createElement("a");
       link.className = "button";
       link.href = `/api/applications/${body.applicationId}/pdf?receipt=${encodeURIComponent(body.receiptToken)}`;
@@ -95,6 +101,8 @@ async function loadDashboard() {
     ["Pathway", profile.pathway],
     ["Accepted", chicago(profile.approvedAt)],
     ["Covenant", profile.agreementVersion],
+    ["Ricardian identifier", profile.ricardian?.proseSha256 ?? ""],
+    ["Signature lock", profile.ricardian?.verified ? "Intact" : "Does not match the stored prose"],
   ]) {
     const wrap = document.createElement("div");
     const term = document.createElement("dt");

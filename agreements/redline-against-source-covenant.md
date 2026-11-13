@@ -200,6 +200,14 @@ PRESERVED, not deleted: "I have freely chosen to change my legal status from a p
 
 **Added:** the signature record includes the version and the server timestamp. The covenant binds on acceptance by the Association, not at the moment of submission alone.
 
+## Later addition — Ricardian form
+
+After the first draft, Section 16 and a definition in Section 0 were added so the covenant is a Ricardian contract: one document a lawyer and a program both read.
+
+The prose now has a SHA-256 identifier. The signer's name, email, location, signature, time, and acknowledgment are parameters. A second hash, the Ricardian lock, binds those parameters to the prose identifier. The signing program recomputes both hashes and accepts the record only when they match. The digest is not written into the prose. The parameters are not written to a public ledger. A wallet is still not required.
+
+This addition does not delete or rewrite the preserved jurisdiction, confidentiality, indemnity, arbitration, SEC, classification, or AI-agent sentences.
+
 ## What was not changed in the repository
 
 - `membership-covenant` is not overwritten.

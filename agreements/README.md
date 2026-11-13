@@ -13,4 +13,6 @@ These files are versioned drafts for counsel. They do not replace the source cov
 | `adbongo-scope-of-work-template.md` | Separate AdBongo LLC service form. It is not the covenant. |
 | `hats-protocol-review.md` | Licensing and security review. Hats is not required to sign. |
 
+Each covenant is a Ricardian contract. A lawyer reads the prose. A program reads the same prose, divided at the same section headings, and checks its SHA-256 identifier. The signer's name and signature are parameters of a particular signing. They are not a second agreement, and they are not written into the prose.
+
 Do not publish these drafts on adbongo.io, templeofroots.com, or any other public site until the legal-issues report is resolved and the Association accepts a version. The signing application in `../membership-app` loads these files and labels them as drafts unless publication is explicitly turned on.

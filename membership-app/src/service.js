@@ -6,6 +6,7 @@ import { isPublishable } from "./config.js";
 import { writeMail } from "./mail.js";
 import { erc721BalanceOf, recoverPersonalSign } from "./nft.js";
 import { renderPdf } from "./pdf.js";
+import { PARAMETER_KEYS, canonicalProse, ricardianDocument, ricardianInstance, verifyRicardianInstance } from "./ricardian.js";
 import { chicagoYear, formatChicago, nowIso } from "./time.js";
 import { hashToken, newToken } from "./tokens.js";
 import {
@@ -36,6 +37,18 @@ function audit(db, event) {
   );
 }
 
+function publicRicardian(body) {
+  const document = ricardianDocument(body);
+  const prose = canonicalProse(body);
+  return {
+    form: document.form,
+    proseSha256: document.proseSha256,
+    prose,
+    parameterKeys: PARAMETER_KEYS,
+    clauses: document.clauses,
+  };
+}
+
 function publicAgreement(row, config) {
   const publishable = isPublishable(row.file_status, config);
   return {
@@ -49,6 +62,7 @@ function publicAgreement(row, config) {
     effective: publishable,
     body: row.body,
     acknowledgment: ACKNOWLEDGMENT,
+    ricardian: publicRicardian(row.body),
   };
 }
 
@@ -106,6 +120,17 @@ export async function submitApplication(db, config, body, meta) {
   const signatureId = crypto.randomUUID();
   const receiptToken = newToken();
   const publishable = isPublishable(agreementRow.file_status, config);
+  const ricardian = ricardianInstance(agreementRow.body, {
+    acknowledgment: ACKNOWLEDGMENT,
+    agreementVersion: agreementRow.version,
+    country: value.country,
+    email: value.email,
+    fullLegalName: value.fullLegalName,
+    pathway: value.pathway,
+    region: value.region,
+    signature: value.signature,
+    submittedAt,
+  });
   const pdfDir = path.join(config.dataDir, "pdfs");
   fs.mkdirSync(pdfDir, { recursive: true });
   const pdfPath = path.join(pdfDir, `${applicationId}.pdf`);
@@ -114,6 +139,9 @@ export async function submitApplication(db, config, body, meta) {
     pathway: value.pathway,
     version: agreementRow.version,
     sha256: agreementRow.content_sha256,
+    proseSha256: ricardian.proseSha256,
+    parametersSha256: ricardian.parametersSha256,
+    ricardianHash: ricardian.ricardianHash,
     applicationId,
     submittedAt,
     fullLegalName: value.fullLegalName,
@@ -152,8 +180,9 @@ export async function submitApplication(db, config, body, meta) {
     );
     db.prepare(
       `INSERT INTO membership_signatures
-        (id, application_id, signature_text, signed_at, agreement_version, acknowledgment_text, content_sha256)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        (id, application_id, signature_text, signed_at, agreement_version, acknowledgment_text, content_sha256,
+         prose_sha256, parameters_sha256, ricardian_hash)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     ).run(
       signatureId,
       applicationId,
@@ -162,6 +191,9 @@ export async function submitApplication(db, config, body, meta) {
       agreementRow.version,
       ACKNOWLEDGMENT,
       agreementRow.content_sha256,
+      ricardian.proseSha256,
+      ricardian.parametersSha256,
+      ricardian.ricardianHash,
     );
     audit(db, {
       actor: "applicant",
@@ -172,6 +204,8 @@ export async function submitApplication(db, config, body, meta) {
         pathway: value.pathway,
         agreementVersion: agreementRow.version,
         agreementSha256: agreementRow.content_sha256,
+        proseSha256: ricardian.proseSha256,
+        ricardianHash: ricardian.ricardianHash,
         publicationStatus: publishable ? "published" : "draft",
         signatureId,
       },
@@ -188,6 +222,7 @@ export async function submitApplication(db, config, body, meta) {
       "Your application for foundational membership is pending approval.",
       `Pathway: ${value.pathway}`,
       `Agreement version: ${agreementRow.version}`,
+      `Ricardian identifier: ${ricardian.proseSha256}`,
       `Submitted: ${formatChicago(submittedAt)}`,
       `UTC: ${submittedAt}`,
       publishable
@@ -209,6 +244,13 @@ export async function submitApplication(db, config, body, meta) {
       submittedAtChicago: formatChicago(submittedAt),
       agreementVersion: agreementRow.version,
       agreementSha256: agreementRow.content_sha256,
+      ricardian: {
+        form: "ricardian-v2",
+        proseSha256: ricardian.proseSha256,
+        parametersSha256: ricardian.parametersSha256,
+        ricardianHash: ricardian.ricardianHash,
+        verified: true,
+      },
       publicationStatus: publishable ? "published" : "draft",
       effective: false,
       pdfPath: `/api/applications/${applicationId}/pdf`,
@@ -222,6 +264,35 @@ function applicationByReceipt(db, applicationId, receiptToken) {
   if (!row) return null;
   if (row.receipt_token_hash !== hashToken(receiptToken)) return null;
   return row;
+}
+
+function storedRicardian(db, application) {
+  const signature = db.prepare(`SELECT * FROM membership_signatures WHERE application_id = ?`).get(application.id);
+  const agreement = db.prepare(`SELECT body FROM agreement_versions WHERE id = ?`).get(application.agreement_version_id);
+  if (!signature || !agreement) {
+    return { form: "ricardian-v2", proseSha256: "", parametersSha256: "", ricardianHash: "", verified: false };
+  }
+  const check = verifyRicardianInstance(agreement.body, {
+    acknowledgment: signature.acknowledgment_text,
+    agreementVersion: signature.agreement_version,
+    country: application.country,
+    email: application.email,
+    fullLegalName: application.full_legal_name,
+    pathway: application.pathway,
+    region: application.region,
+    signature: signature.signature_text,
+    submittedAt: signature.signed_at,
+    proseSha256: signature.prose_sha256,
+    parametersSha256: signature.parameters_sha256,
+    ricardianHash: signature.ricardian_hash,
+  });
+  return {
+    form: "ricardian-v2",
+    proseSha256: signature.prose_sha256,
+    parametersSha256: signature.parameters_sha256,
+    ricardianHash: signature.ricardian_hash,
+    verified: check.verified,
+  };
 }
 
 export function readApplicationStatus(db, applicationId, receiptToken) {
@@ -240,6 +311,7 @@ export function readApplicationStatus(db, applicationId, receiptToken) {
       membershipId: member?.membership_id ?? null,
       memberStatus: member?.status ?? null,
       effective: Boolean(member?.effective),
+      ricardian: storedRicardian(db, row),
     },
   };
 }
@@ -423,7 +495,7 @@ function benefitsFor(db, pathway) {
 }
 
 export function memberProfile(db, member) {
-  const application = db.prepare(`SELECT agreement_version, agreement_sha256, submitted_at FROM membership_applications WHERE id = ?`).get(member.application_id);
+  const application = db.prepare(`SELECT * FROM membership_applications WHERE id = ?`).get(member.application_id);
   const wallets = db
     .prepare(`SELECT address, chain_id, verified_at, verification_method FROM wallet_connections WHERE member_id = ?`)
     .all(member.id);
@@ -436,6 +508,7 @@ export function memberProfile(db, member) {
     email: member.email,
     agreementVersion: application?.agreement_version ?? "",
     agreementSha256: application?.agreement_sha256 ?? "",
+    ricardian: application ? storedRicardian(db, application) : { verified: false },
     submittedAt: application?.submitted_at ?? member.approved_at,
     approvedAt: member.approved_at,
     approvedAtChicago: formatChicago(member.approved_at),

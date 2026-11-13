@@ -44,7 +44,10 @@ CREATE TABLE IF NOT EXISTS membership_signatures (
   signed_at TEXT NOT NULL,
   agreement_version TEXT NOT NULL,
   acknowledgment_text TEXT NOT NULL,
-  content_sha256 TEXT NOT NULL
+  content_sha256 TEXT NOT NULL,
+  prose_sha256 TEXT NOT NULL DEFAULT '',
+  parameters_sha256 TEXT NOT NULL DEFAULT '',
+  ricardian_hash TEXT NOT NULL DEFAULT ''
 );
 
 CREATE TABLE IF NOT EXISTS membership_approvals (

@@ -87,6 +87,9 @@ test("drafts keep the required clauses and leave the source covenant in place", 
     assert.match(text, /Each member indemnifies and holds harmless/);
     assert.match(text, /Membership in the Advocacy Launchpad Private Membership Association establishes a private contractual relationship/);
     assert.match(text, /does not take custody of private keys/);
+    assert.match(text, /one document that a lawyer and a program both read/);
+    assert.match(text, /## 16\. Ricardian Form/);
+    assert.match(text, /acknowledgment, agreementVersion, country, email, fullLegalName, pathway, proseSha256, region, signature, and submittedAt/);
     assert.doesNotMatch(text, /minimum of \*\*100 years\*\*/);
   }
   assert.match(adbongo, /No religious belief is required/);
@@ -140,6 +143,17 @@ test("enrollment, approval, dashboard, and NFT checks", async () => {
     assert.ok(adbongoHtml.includes(ACKNOWLEDGMENT));
     assert.match(adbongoHtml, /No religious belief is required/);
     assert.match(adbongoHtml, /complete membership covenant/i);
+    assert.match(adbongoHtml, /Ricardian identifier/);
+    assert.match(adbongoHtml, /A lawyer reads the covenant below/);
+    const machine = await api(started.base, "/api/agreements/adbongo");
+    const prose = machine.data.ricardian.clauses.map((clause) => clause.text).join("");
+    assert.equal(prose, machine.data.ricardian.prose);
+    assert.equal(machine.data.ricardian.proseSha256.length, 64);
+    assert.ok(adbongoHtml.includes(machine.data.ricardian.proseSha256));
+    assert.ok(adbongoHtml.includes("16. Ricardian Form"));
+    assert.ok(prose.includes("## 16. Ricardian Form"));
+    assert.equal(JSON.stringify(machine.data).includes("ada@example.com"), false);
+    assert.ok(machine.data.ricardian.parameterKeys.includes("fullLegalName"));
     assert.match(adbongoHtml, /Optional Blockchain Credentials/);
     assert.ok(adbongoHtml.indexOf("Optional Blockchain Credentials") < adbongoHtml.indexOf("join-form"));
 
@@ -175,6 +189,15 @@ test("enrollment, approval, dashboard, and NFT checks", async () => {
     assert.equal(created.data.status, "pending");
     assert.equal(created.data.effective, false);
     assert.equal(created.data.publicationStatus, "draft");
+    assert.equal(created.data.ricardian.verified, true);
+    assert.match(created.data.ricardian.proseSha256, /^[a-f0-9]{64}$/);
+    assert.notEqual(created.data.ricardian.proseSha256, created.data.agreementSha256);
+    const status = await api(
+      started.base,
+      `/api/applications/${created.data.applicationId}?receipt=${created.data.receiptToken}`,
+    );
+    assert.equal(status.data.ricardian.ricardianHash, created.data.ricardian.ricardianHash);
+    assert.equal(status.data.ricardian.verified, true);
     assert.match(created.data.submittedAtChicago, /CT$/);
 
     const pdf = await fetch(`${started.base}${created.data.pdfPath}?receipt=${created.data.receiptToken}`);

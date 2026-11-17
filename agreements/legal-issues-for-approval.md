@@ -204,11 +204,19 @@ The picture under consideration is that members would elect the board of Advocac
 
 A related picture, also not written into the drafts: Temple membership is church membership. An AdBongo agreement would be for the accelerator program, understood as a Temple program for impact missions. The church would work with AdBongo through the PMA. Charity and funding language stays with the securities and tax items above until counsel adopts it.
 
-## 18. Publication gate
+## 18. Consideration — what the private association can carry
+
+The reason for a private membership association, as described for these drafts, is to keep certain ministry work among people who have chosen to associate. That includes religious exercise, and it may later include member-only conversation about tokens, DAO governance, or medicine practiced with the church. Those later topics are not offerings in the current drafts. The old price list that named ceremonies and medicines was removed. A public page should not advertise them.
+
+What the covenant can do is say who may join, that the relationship is private and contractual, and that a risky activity needs its own consent or a separate agreement. Member names and signatures stay on the steward's machine.
+
+What it cannot do is place a member, a steward, a token, a DAO, or a medicine practice outside criminal law, drug law, food-and-drug law, tax law, or securities law. A clause that says the Association has exclusive jurisdiction, or that members will not speak to public authorities, does not stop a warrant and can mislead the person who relied on it. Those sentences are already flagged in items 1 and 2. Leave them for counsel. Do not add stronger versions in order to feel protected.
+
+## 19. Publication gate
 
 Before either website links to the signing flow:
 
-1. Decide items 1 through 9 and 11 through 13. Item 17 waits until governance is finalized.
+1. Decide items 1 through 9 and 11 through 13. Items 17 and 18 wait. Item 17 is governance. Item 18 is the limit on what a private association can carry.
 2. Replace this draft version or mark a version accepted.
 3. Set the application's publication flag only for the accepted text.
 4. Keep foundational membership usable with no Patreon charge, no Hipcamp reservation, and no wallet.

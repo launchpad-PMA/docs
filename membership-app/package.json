@@ -1,0 +1,19 @@
+{
+  "name": "advocacy-launchpad-membership",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Shared electronic membership signing and approval for the Advocacy Launchpad PMA. Draft agreements are not in effect until published by the Association.",
+  "type": "module",
+  "license": "GPL-3.0-only",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test --test-concurrency=1 test/*.test.js"
+  },
+  "dependencies": {
+    "ethers": "^6.15.0",
+    "pdfkit": "^0.17.2"
+  }
+}

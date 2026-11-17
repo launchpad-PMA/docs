@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Steward approval</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="admin">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="/">Advocacy Launchpad PMA</a>
+      <nav aria-label="Pathways"><a href="/dashboard">Member record</a></nav>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <h1>Steward approval</h1>
+    <p class="lede">Accept or decline pending applications. Approval of a draft covenant records the application and does not make membership effective.</p>
+    <form id="admin-login" class="stack">
+      <p id="admin-message" role="alert"></p>
+      <label>Steward credential <input id="admin-token" type="password" autocomplete="current-password" required></label>
+      <button type="submit">Unlock approval queue</button>
+    </form>
+    <section id="admin-app" hidden>
+      <label>Decision note <textarea id="decision-notes" maxlength="2000" placeholder="Optional note, required in substance if you want the applicant to see a reason"></textarea></label>
+      <div id="decision-result" class="card" hidden></div>
+      <div class="card table-wrap">
+        <table id="applications">
+          <thead>
+            <tr><th>Name</th><th>Email</th><th>Pathway</th><th>Status</th><th>Submitted</th><th>Membership ID</th><th>Actions</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <form id="collection-form" class="panel">
+        <h2>Designated NFT collection</h2>
+        <p class="meta">Store the contract address, chain, and benefit note. Ownership does not create membership.</p>
+        <label>Name <input name="name" required maxlength="160"></label>
+        <label>Collection address <input name="collectionAddress" required pattern="0x[a-fA-F0-9]{40}"></label>
+        <div class="split">
+          <label>Chain id <input name="chainId" type="number" min="1" required value="1"></label>
+          <label>Pathway
+            <select name="pathway">
+              <option value="all">All pathways</option>
+              <option value="adbongo">AdBongo</option>
+              <option value="temple">Temple of Roots</option>
+            </select>
+          </label>
+        </div>
+        <label>Benefits note <textarea name="benefits" maxlength="2000"></textarea></label>
+        <button type="submit">Save collection</button>
+        <ul id="collections"></ul>
+      </form>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

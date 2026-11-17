@@ -196,11 +196,29 @@ The membership app ships a tested SQLite runtime and a Postgres migration shaped
 
 The drafts now describe a Ricardian form. A lawyer reads the prose. A program reads that same prose, divided at the same headings. The prose has a SHA-256 identifier, and the signature record binds the member's parameters to that identifier. The check recomputes the hashes. It does not move the disputed sentences out of the document, and it does not make them enforceable. A locked draft is still a draft. Publishing the identifier later would publish the hash of the text, not the member's name, email, or signature. Counsel should treat the identifier as a way to know which text was signed, and should still decide the items above before any version is marked approved.
 
-## 17. Publication gate
+## 17. Consideration — boards
+
+Leave every board sentence out of both covenants, the Scope of Work, and the websites until governance is finalized. This is a consideration, not a term.
+
+The picture under consideration is that members would elect the board of Advocacy Launchpad PMA, and those directors might later be the same people who serve as AdBongo LLC's board. The drafts still say the covenant does not state or change AdBongo's ownership or management. When that choice is final, it belongs in the PMA's governance text and in AdBongo's own company documents together.
+
+A related picture, also not written into the drafts: Temple membership is church membership. An AdBongo agreement would be for the accelerator program, understood as a Temple program for impact missions. The church would work with AdBongo through the PMA. Charity and funding language stays with the securities and tax items above until counsel adopts it.
+
+## 18. Consideration — what the private association can carry
+
+The reason for a private membership association, as described for these drafts, is to keep certain ministry work among people who have chosen to associate. That includes religious exercise, and it may later include member-only conversation about tokens, DAO governance, or medicine practiced with the church. Those later topics are not offerings in the current drafts. The old price list that named ceremonies and medicines was removed. A public page should not advertise them.
+
+What the covenant can do is say who may join, that the relationship is private and contractual, and that a risky activity needs its own consent or a separate agreement. Member names and signatures stay on the steward's machine.
+
+The broader aim is several layers, each with its own paper: the Temple ministry, this private association, AdBongo LLC, and a trust only if counsel creates one. A trust, an LLC, and a PMA each answers a different claim. The association answers who is in the private relationship. The LLC answers which company made a contract or took a fee. A trust answers who holds an asset for a beneficiary. When the money, the books, and the signatures stay with the layer that incurred the obligation, a claim against one layer has a harder time reaching the others. Courts still hear claims against each layer, and they set aside a structure that exists only on a label. The covenants do not say that any entity cannot be sued, taken over, or reached. That promise would be false, and it is left out.
+
+What it cannot do is place a member, a steward, a token, a DAO, or a medicine practice outside criminal law, drug law, food-and-drug law, tax law, or securities law. A clause that says the Association has exclusive jurisdiction, or that members will not speak to public authorities, does not stop a warrant and can mislead the person who relied on it. Those sentences are already flagged in items 1 and 2. Leave them for counsel. Do not add stronger versions in order to feel protected.
+
+## 19. Publication gate
 
 Before either website links to the signing flow:
 
-1. Decide items 1 through 9 and 11 through 13.
+1. Decide items 1 through 9 and 11 through 13. Items 17 and 18 wait. Item 17 is governance. Item 18 is the limit on what a private association can carry.
 2. Replace this draft version or mark a version accepted.
 3. Set the application's publication flag only for the accepted text.
 4. Keep foundational membership usable with no Patreon charge, no Hipcamp reservation, and no wallet.

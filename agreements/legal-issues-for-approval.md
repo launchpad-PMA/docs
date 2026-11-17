@@ -196,11 +196,19 @@ The membership app ships a tested SQLite runtime and a Postgres migration shaped
 
 The drafts now describe a Ricardian form. A lawyer reads the prose. A program reads that same prose, divided at the same headings. The prose has a SHA-256 identifier, and the signature record binds the member's parameters to that identifier. The check recomputes the hashes. It does not move the disputed sentences out of the document, and it does not make them enforceable. A locked draft is still a draft. Publishing the identifier later would publish the hash of the text, not the member's name, email, or signature. Counsel should treat the identifier as a way to know which text was signed, and should still decide the items above before any version is marked approved.
 
-## 17. Publication gate
+## 17. Consideration — boards
+
+Leave every board sentence out of both covenants, the Scope of Work, and the websites until governance is finalized. This is a consideration, not a term.
+
+The picture under consideration is that members would elect the board of Advocacy Launchpad PMA, and those directors might later be the same people who serve as AdBongo LLC's board. The drafts still say the covenant does not state or change AdBongo's ownership or management. When that choice is final, it belongs in the PMA's governance text and in AdBongo's own company documents together.
+
+A related picture, also not written into the drafts: Temple membership is church membership. An AdBongo agreement would be for the accelerator program, understood as a Temple program for impact missions. The church would work with AdBongo through the PMA. Charity and funding language stays with the securities and tax items above until counsel adopts it.
+
+## 18. Publication gate
 
 Before either website links to the signing flow:
 
-1. Decide items 1 through 9 and 11 through 13.
+1. Decide items 1 through 9 and 11 through 13. Item 17 waits until governance is finalized.
 2. Replace this draft version or mark a version accepted.
 3. Set the application's publication flag only for the accepted text.
 4. Keep foundational membership usable with no Patreon charge, no Hipcamp reservation, and no wallet.

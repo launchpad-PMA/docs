@@ -210,6 +210,8 @@ The reason for a private membership association, as described for these drafts, 
 
 What the covenant can do is say who may join, that the relationship is private and contractual, and that a risky activity needs its own consent or a separate agreement. Member names and signatures stay on the steward's machine.
 
+The broader aim is several layers, each with its own paper: the Temple ministry, this private association, AdBongo LLC, and a trust only if counsel creates one. A trust, an LLC, and a PMA each answers a different claim. The association answers who is in the private relationship. The LLC answers which company made a contract or took a fee. A trust answers who holds an asset for a beneficiary. When the money, the books, and the signatures stay with the layer that incurred the obligation, a claim against one layer has a harder time reaching the others. Courts still hear claims against each layer, and they set aside a structure that exists only on a label. The covenants do not say that any entity cannot be sued, taken over, or reached. That promise would be false, and it is left out.
+
 What it cannot do is place a member, a steward, a token, a DAO, or a medicine practice outside criminal law, drug law, food-and-drug law, tax law, or securities law. A clause that says the Association has exclusive jurisdiction, or that members will not speak to public authorities, does not stop a warrant and can mislead the person who relied on it. Those sentences are already flagged in items 1 and 2. Leave them for counsel. Do not add stronger versions in order to feel protected.
 
 ## 19. Publication gate
